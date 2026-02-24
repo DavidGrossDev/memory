@@ -1,0 +1,84 @@
+@use '../abstract/mixin' as mx;
+
+.main-body {
+    background-color: rgba(48, 49, 49, 1);
+    height: 100vh;
+    @include mx.d-flex();
+}
+
+.main-container {
+    @include mx.d-flex($jc:space-between);
+    min-height: 415px; 
+}
+
+.introduce {
+    @include mx.d-flex($ai: flex-start, $fd: column-reverse);
+
+    &__headline {
+        @include mx.font-red-rose($fs: 140px);
+        color: rgba(255, 255, 255, 1);
+
+        &--top {
+            @include mx.font-almarai();
+        }
+    }
+}
+
+.play-btn {
+    @include mx.d-flex($gp: 20px, $fd: row);
+    cursor: pointer;
+    width: 250px;
+    padding: 24px;
+    color: rgba(48, 49, 49, 1);
+    background-color: rgba(240, 234, 110, 1);
+    
+
+    &__controller {
+        width: 44px;
+        transition: transform 0.3s ease-in-out;
+        transform: rotateZ(0deg);
+    }
+
+    &__title {
+        @include mx.font-red-rose($fs: 40px)
+    }
+
+    &__container {
+        width: 33px;
+        position: relative;
+    }
+
+    &__arrow {
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    &__arrow--big {
+        opacity: 0;
+    }
+
+    &:hover {
+        width: 270px;
+        height: 102px;
+        transition: height 0.3, width 0.2s ease-in-out;
+
+        & .play-btn {
+            &__container{
+                width: 40px;
+            }
+            &__controller--transform{
+                transform: rotateZ(-25.77deg);
+            }
+            &__arrow--small{
+                opacity: 0;
+            }
+            &__arrow--big{
+                opacity: 1;
+            }
+        }
+    }
+}

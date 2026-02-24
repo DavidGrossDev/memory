@@ -1,0 +1,19 @@
+@mixin d-flex($jc: center, $ai: center, $gp: 0px, $fd: column) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gp;
+    flex-direction: $fd;
+}
+
+@mixin font-red-rose($fw: 700, $fs: 16px) {
+    font-family: 'Red Rose';
+    font-weight: $fw;
+    font-size: $fs;
+}
+
+@mixin font-almarai($fs: 48px) {
+    font-family: 'Almarai';
+    font-weight: 400;
+    font-size: $fs;
+}

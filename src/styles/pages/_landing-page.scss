@@ -2,8 +2,7 @@
 
 .main-body {
     background-color: rgba(48, 49, 49, 1);
-    height: 100vh;
-    @include mx.d-flex();
+     @include mx.d-flex();
 }
 
 .main-container {
@@ -31,6 +30,7 @@
     padding: 24px;
     color: rgba(48, 49, 49, 1);
     background-color: rgba(240, 234, 110, 1);
+    transition: height 0.3, width 0.2s ease-in-out;
     
 
     &__controller {
@@ -64,7 +64,6 @@
     &:hover {
         width: 270px;
         height: 102px;
-        transition: height 0.3, width 0.2s ease-in-out;
 
         & .play-btn {
             &__container{

@@ -1,0 +1,43 @@
+@use '../abstract/mixins' as mx;
+
+.game-body-da-project-theme {
+    @include mx.d-flex($jc:flex-start);
+}
+
+.game-header {
+    @include mx.d-flex($jc:space-between, $fd:row);
+    margin-top: 8px;
+    width: 1219px;
+    height: 102px;
+    border-radius: 10px;
+    padding: 24px;
+    background-color: rgba(240, 243, 244, 1);
+
+    &__section {
+        @include mx.d-flex($fd:row);
+    }
+}
+
+.visual-score {
+    gap: 40px;
+    padding: 0 16px;
+    width: 156px;
+    height: 54px;
+
+    &__default {
+        @include mx.d-flex($fd:row, $gp:4px);
+        @include mx.font-figtree($fs:30px);
+    }
+
+    &__playerOrange {
+        >p {
+            color: rgba(234, 105, 0, 1);
+        } 
+    }
+
+    &__playerBlue {
+        >p {
+            color: rgba(9, 127, 197, 1);
+        }
+    }
+}

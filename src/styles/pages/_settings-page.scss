@@ -1,0 +1,150 @@
+@use '../abstract/mixins' as mx;
+
+.settings-body {
+    @include mx.d-flex();
+}
+
+.settings-content {
+    @include mx.d-flex($ai: flex-start);
+
+    &__title {
+        @include mx.font-red-rose($fs: 54px);
+        margin-bottom: 47px;
+    }
+}
+
+.settings-main {
+    @include mx.d-flex($jc: space-between, $fd: row);
+    width: 1103px;
+    height: 539px;
+
+    &__left {
+        @include mx.d-flex($jc: space-between, $ai: flex-start);
+        height: 100%;
+    }
+
+    &__right {
+        @include mx.d-flex($jc: space-between, $ai: flex-end);
+        height: 100%;
+
+        >img {
+            width: 460px;
+            height: 412px;
+        }
+    }
+}
+
+.setting-section {
+    @include mx.d-flex($ai: flex-start, $gp: 16px)
+}
+
+.settings-headline {
+    @include mx.d-flex($jc: flex-start, $fd: row, $gp: 8px);
+
+    &__svg {
+        height: 32px;
+        width: 32px;
+    }
+
+    &__title {
+        @include mx.font-almarai($fw: 700, $fs: 24px)
+    }
+}
+
+.choose-section {
+    @include mx.d-flex($ai: flex-start, $gp: 12px);
+    padding-left: 44px;
+}
+
+.select-btn {
+    cursor: pointer;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    min-height: 33px;
+    @include mx.d-flex($fd: row, $gp: 10px);
+
+    &__svg {
+
+        &--active {
+            display: none;
+        }
+    }
+
+    &__text {
+        @include mx.font-almarai($fs: 20px);
+    }
+
+    &:hover .select-btn {
+        &__text {
+            font-weight: 700;
+        }
+
+        &__svg {
+            display: none;
+
+            &--active {
+                display: flex;
+            }
+        }
+    }
+
+}
+
+.selected-items-and-play-btn {
+    @include mx.d-flex($fd: row, $gp: 16px);
+    height: 81px;
+    padding: 14px 20px;
+
+    &__text {
+        @include mx.font-almarai($fs: 20px);
+    }
+
+    &__svg {
+        &--active {
+            display: none;
+        }
+    }
+
+    &__btn {
+        cursor: pointer;
+        @include mx.d-flex($fd: row, $gp: 8px);
+        border-width: 0;
+        padding: 14px 20px;
+        background-color: rgba(240, 234, 110, 1);
+        width: 126px;
+        height: 53px;
+        transition: transform 0.3s ease-in-out;
+
+
+        >svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease-in-out;
+            transform: rotateZ(0deg);
+        }
+
+        >p {
+            @include mx.font-red-rose($fs: 20px);
+        }
+
+        &:hover {
+            width: 140px;
+            height: 61px;
+            transform: scale(1.1);
+            >svg {
+                transform: rotateZ(-5.33deg);
+            }
+        }
+    }
+
+    &:hover .selected-items-and-play-btn {
+
+        &__svg {
+            display: none;
+
+            &--active {
+                display: flex;
+            }
+        }
+    }
+}

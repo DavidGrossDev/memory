@@ -1,12 +1,18 @@
 @use './base/font/fonts';
 @use './pages/landing-page';
+@use './pages/settings-page';
+@use './themes/da_projekt_theme';
 
 * {
     margin: 0;
     box-sizing: border-box;
 }
 
-a{
+body {
+    height: 100vh;
+}
+
+a {
     text-decoration: none;
 }
 

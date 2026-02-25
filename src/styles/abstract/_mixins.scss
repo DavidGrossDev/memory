@@ -12,8 +12,14 @@
     font-size: $fs;
 }
 
-@mixin font-almarai($fs: 48px) {
+@mixin font-almarai($fw:400, $fs: 48px) {
     font-family: 'Almarai';
-    font-weight: 400;
+    font-weight: $fw;
+    font-size: $fs;
+}
+
+@mixin font-figtree($fw: 700, $fs:32px) {
+    font-family: 'Figtree';
+    font-weight: $fw;
     font-size: $fs;
 }

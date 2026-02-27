@@ -1,7 +1,7 @@
 @use './base/font/fonts';
 @use './pages/landing-page';
 @use './pages/settings-page';
-@use './themes/da_projekt_theme';
+@use './pages/game-page';
 
 * {
     margin: 0;
@@ -14,5 +14,9 @@ body {
 
 a {
     text-decoration: none;
+}
+
+.d_none {
+    display: none;
 }
 

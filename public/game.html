@@ -7,9 +7,18 @@
     <title>Memory</title>
 </head>
 
-<body class="game-body-da-project-theme">
-    <header class="game-header">
-        <div class="game-header__section visual-score">
+<body class="game-body">
+    <section class="game-body-overlay d_none" onclick="stopPropagation()">
+        <div class="game-body-overlay__card game-body-overlay__card--foods">
+            <h3 class="game-body-overlay__card__title--foods">Are you sure you want to quit the game?</h3>
+            <div class="game-body-overlay__card__btn-div">
+                <button class="game-body-overlay__card__bck-btn--foods">No, Back to game</button>
+                <button class="game-body-overlay__card__ext-btn--foods">Exit game</button>
+            </div>
+        </div>
+    </section>
+    <header class="game-header game-header--foods">
+        <div class="game-header__section visual-score visual-score--foods">
             <div class="visual-score__default visual-score__playerOrange">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25" fill="none">
                     <path
@@ -19,7 +28,7 @@
                 <p>6</p>
             </div>
             <div class="visual-score__default visual-score__playerBlue">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" viewBox="0 0 20 25" fill="none">
+                <svg width="20" height="25" viewBox="0 0 20 25" fill="none">
                     <path
                         d="M2.5 25C1.8125 25 1.22396 24.7552 0.734375 24.2656C0.244792 23.776 0 23.1875 0 22.5V20.0312C0 19.6146 0.09375 19.2292 0.28125 18.875C0.46875 18.5208 0.71875 18.2188 1.03125 17.9688C2.46875 16.8021 3.54688 15.625 4.26562 14.4375C4.98438 13.25 5.48958 12.1875 5.78125 11.25H3.75C3.39583 11.25 3.09896 11.1302 2.85938 10.8906C2.61979 10.651 2.5 10.3542 2.5 10C2.5 9.64583 2.61979 9.34896 2.85938 9.10938C3.09896 8.86979 3.39583 8.75 3.75 8.75H5.3125C5.02083 8.29167 4.79167 7.80208 4.625 7.28125C4.45833 6.76042 4.375 6.20833 4.375 5.625C4.375 4.0625 4.92188 2.73438 6.01562 1.64062C7.10938 0.546875 8.4375 0 10 0C11.5625 0 12.8906 0.546875 13.9844 1.64062C15.0781 2.73438 15.625 4.0625 15.625 5.625C15.625 6.20833 15.5417 6.76042 15.375 7.28125C15.2083 7.80208 14.9792 8.29167 14.6875 8.75H16.25C16.6042 8.75 16.901 8.86979 17.1406 9.10938C17.3802 9.34896 17.5 9.64583 17.5 10C17.5 10.3542 17.3802 10.651 17.1406 10.8906C16.901 11.1302 16.6042 11.25 16.25 11.25H14.2188C14.5104 12.1875 15.0156 13.25 15.7344 14.4375C16.4531 15.625 17.5312 16.8021 18.9688 17.9688C19.2812 18.2188 19.5312 18.5208 19.7188 18.875C19.9062 19.2292 20 19.6146 20 20.0312V22.5C20 23.1875 19.7552 23.776 19.2656 24.2656C18.776 24.7552 18.1875 25 17.5 25H2.5ZM2.5 22.5H17.5V20C15.5833 18.5 14.1979 16.9531 13.3438 15.3594C12.4896 13.7656 11.9167 12.3958 11.625 11.25H8.375C8.08333 12.3958 7.51042 13.7656 6.65625 15.3594C5.80208 16.9531 4.41667 18.5 2.5 20V22.5ZM10 8.75C10.875 8.75 11.6146 8.44792 12.2188 7.84375C12.8229 7.23958 13.125 6.5 13.125 5.625C13.125 4.75 12.8229 4.01042 12.2188 3.40625C11.6146 2.80208 10.875 2.5 10 2.5C9.125 2.5 8.38542 2.80208 7.78125 3.40625C7.17708 4.01042 6.875 4.75 6.875 5.625C6.875 6.5 7.17708 7.23958 7.78125 7.84375C8.38542 8.44792 9.125 8.75 10 8.75Z"
                         fill="#097FC5" />
@@ -27,17 +36,17 @@
                 <p>2</p>
             </div>
         </div>
-        <div class="game-header__section">
-            <h2>Current player</h2>
-            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+        <div class="game-header__section current-player">
+            <h2 class="current-player__title--foods">Current player:</h2>
+            <svg class="current-player__svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
                 <rect width="41" height="40" rx="8" fill="#097FC5" />
                 <path
                     d="M11.125 36C10.2656 36 9.52995 35.6867 8.91797 35.06C8.30599 34.4333 8 33.68 8 32.8V29.64C8 29.1067 8.11719 28.6133 8.35156 28.16C8.58594 27.7067 8.89844 27.32 9.28906 27C11.0859 25.5067 12.4336 24 13.332 22.48C14.2305 20.96 14.862 19.6 15.2266 18.4H12.6875C12.2448 18.4 11.8737 18.2467 11.5742 17.94C11.2747 17.6333 11.125 17.2533 11.125 16.8C11.125 16.3467 11.2747 15.9667 11.5742 15.66C11.8737 15.3533 12.2448 15.2 12.6875 15.2H14.6406C14.276 14.6133 13.9896 13.9867 13.7812 13.32C13.5729 12.6533 13.4688 11.9467 13.4688 11.2C13.4688 9.2 14.1523 7.5 15.5195 6.1C16.8867 4.7 18.5469 4 20.5 4C22.4531 4 24.1133 4.7 25.4805 6.1C26.8477 7.5 27.5312 9.2 27.5312 11.2C27.5312 11.9467 27.4271 12.6533 27.2188 13.32C27.0104 13.9867 26.724 14.6133 26.3594 15.2H28.3125C28.7552 15.2 29.1263 15.3533 29.4258 15.66C29.7253 15.9667 29.875 16.3467 29.875 16.8C29.875 17.2533 29.7253 17.6333 29.4258 17.94C29.1263 18.2467 28.7552 18.4 28.3125 18.4H25.7734C26.138 19.6 26.7695 20.96 27.668 22.48C28.5664 24 29.9141 25.5067 31.7109 27C32.1016 27.32 32.4141 27.7067 32.6484 28.16C32.8828 28.6133 33 29.1067 33 29.64V32.8C33 33.68 32.694 34.4333 32.082 35.06C31.4701 35.6867 30.7344 36 29.875 36H11.125ZM11.125 32.8H29.875V29.6C27.4792 27.68 25.7474 25.7 24.6797 23.66C23.612 21.62 22.8958 19.8667 22.5312 18.4H18.4688C18.1042 19.8667 17.388 21.62 16.3203 23.66C15.2526 25.7 13.5208 27.68 11.125 29.6V32.8ZM20.5 15.2C21.5938 15.2 22.5182 14.8133 23.2734 14.04C24.0286 13.2667 24.4062 12.32 24.4062 11.2C24.4062 10.08 24.0286 9.13333 23.2734 8.36C22.5182 7.58667 21.5938 7.2 20.5 7.2C19.4062 7.2 18.4818 7.58667 17.7266 8.36C16.9714 9.13333 16.5938 10.08 16.5938 11.2C16.5938 12.32 16.9714 13.2667 17.7266 14.04C18.4818 14.8133 19.4062 15.2 20.5 15.2Z"
                     fill="white" />
             </svg>
         </div>
-        <a class="game-header__section">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <button class="game-header__section exit-btn exit-btn-foods">
+            <svg class="exit-btn-foods__svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
                 <mask id="mask0_3282_2931" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30"
                     height="30">
                     <rect width="30" height="30" fill="#D9D9D9" />
@@ -48,9 +57,60 @@
                         fill="#1E7594" />
                 </g>
             </svg>
-            <p>Exit game</p>
-        </a>
+            <p class="exit-btn-foods__text">Exit game</p>
+        </button>
     </header>
+    <main class="game-main-content game-main-content--foods">
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+        <div class="card-foods">
+            <img src="/assets/img/foods_card_front.png" alt="">
+        </div>
+    </main>
+
 
     <script type="module" src="../src/main.ts"></script>
 </body>

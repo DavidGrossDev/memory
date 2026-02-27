@@ -23,3 +23,15 @@
     font-weight: $fw;
     font-size: $fs;
 }
+
+@mixin font-delius-unicase($fw:700, $fs:16) {
+    font-family: 'Delius Unicase';
+    font-weight: $fw;
+    font-size: $fs;
+}
+
+@mixin font-klee-one($fw: 600, $fs:32px) {
+    font-family: 'Klee One';
+    font-weight: $fw;
+    font-size: $fs;
+}

@@ -1,43 +1,82 @@
 @use '../abstract/mixins' as mx;
 
-.game-body-da-project-theme {
-    @include mx.d-flex($jc:flex-start);
-}
-
 .game-header {
-    @include mx.d-flex($jc:space-between, $fd:row);
-    margin-top: 8px;
-    width: 1219px;
-    height: 102px;
-    border-radius: 10px;
-    padding: 24px;
-    background-color: rgba(240, 243, 244, 1);
-
-    &__section {
-        @include mx.d-flex($fd:row);
+    &--da-projects{
+        background-color: rgba(240, 243, 244, 1);
     }
 }
 
 .visual-score {
-    gap: 40px;
-    padding: 0 16px;
-    width: 156px;
-    height: 54px;
+    &--da-projects {
+        @include mx.font-figtree($fs: 30px);
+    }
+}
 
-    &__default {
-        @include mx.d-flex($fd:row, $gp:4px);
-        @include mx.font-figtree($fs:30px);
+.current-player {
+    &__title {
+        &--da-projects {
+            @include mx.font-figtree();
+            color: rgba(30, 117, 148, 1);
+        }
+    }
+}
+
+.exit-btn {
+    &-da-projects {
+        background-color: rgba(191, 229, 242, 1);
+
+        &__svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        &__text {
+            @include mx.font-figtree($fs: 20px);
+            color: rgba(30, 117, 148, 1);
+        }
+    }
+}
+
+.game-main-content {
+    &--da-projects {
+        width: 528px;
+    }
+}
+
+.card-da-project {
+    cursor: pointer;
+    width: 120px;
+    height: 100px;
+}
+
+.game-body-overlay__card{
+    &--da-projects{
+        background-color: rgba(240, 246, 249, 1);
+    }
+    &__title {
+        &--da-projects {
+            @include mx.font-figtree($fw: 700, $fs: 28px); 
+            text-align: center;
+            color: rgba(41, 79, 96, 1);
+        }
+    }
+    &__bck-btn {
+        &--da-projects {
+            border-width: 0;
+            background-color: rgba(191, 229, 242, 1);
+            @include mx.font-figtree($fs:16px);
+            color: rgba(30, 117, 148, 1);
+            box-shadow: 3px 3px 5px rgba(47, 46, 46, 0.2);
+        }
     }
 
-    &__playerOrange {
-        >p {
-            color: rgba(234, 105, 0, 1);
-        } 
-    }
-
-    &__playerBlue {
-        >p {
-            color: rgba(9, 127, 197, 1);
+    &__ext-btn {
+        &--da-projects {
+            border-width: 0;
+            background-color: rgba(253, 138, 129, 1);
+            @include mx.font-figtree($fs:16px);
+            color:rgba(255, 255, 255, 1);
+            box-shadow: 3px 3px 5px rgba(47, 46, 46, 0.2);
         }
     }
 }

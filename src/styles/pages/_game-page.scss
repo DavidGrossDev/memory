@@ -1,0 +1,94 @@
+@use '../themes/da_projekt_theme';
+@use '../themes/foods_theme';
+@use '../abstract/mixins' as mx;
+
+.game-body {
+    @include mx.d-flex($jc: flex-start);
+
+    &-overlay {
+        @include mx.d-flex();
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.2);
+
+        &__card {
+            @include mx.d-flex($jc: space-between, $gp: 54px);
+            padding: 40px;
+            width: 456px;
+            height: 253px;
+            border-radius: 20px;
+
+            &__btn-div {
+                @include mx.d-flex($fd: row, $gp: 24px);
+
+                >button {
+                    cursor: pointer;
+                    border-radius: 10px;
+                    padding: 12px 20px;
+                }
+            }
+        }
+    }
+}
+
+.game-header {
+    @include mx.d-flex($jc: space-between, $fd: row);
+    margin-top: 8px;
+    width: 1219px;
+    height: 102px;
+    border-radius: 10px;
+    padding: 24px;
+
+    &__section {
+        @include mx.d-flex($fd: row);
+    }
+}
+
+.visual-score {
+    gap: 40px;
+    padding: 0 16px;
+    width: 156px;
+    height: 54px;
+    border-radius: 10px;
+
+    &__default {
+        @include mx.d-flex($fd: row, $gp: 4px);
+    }
+
+    &__playerOrange {
+        >p {
+            color: rgba(234, 105, 0, 1);
+        }
+    }
+
+    &__playerBlue {
+        >p {
+            color: rgba(9, 127, 197, 1);
+        }
+    }
+}
+
+.current-player {
+    gap: 18px;
+
+    &__svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.exit-btn {
+    @include mx.d-flex($fd: row, $gp: 10px);
+    border-width: 0;
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+.game-main-content {
+    @include mx.d-flex($fd: row, $gp: 16px);
+    margin-top: 32px;
+    flex-wrap: wrap;
+}

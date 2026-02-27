@@ -1,0 +1,88 @@
+@use '../abstract/mixins' as mx;
+
+.game-header {
+    &--foods {
+        background-color: rgba(240, 229, 217, 1);
+    }
+}
+
+.visual-score {
+    &--foods {
+        @include mx.font-delius-unicase($fs: 30px);
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+.current-player {
+    &__title {
+        &--foods {
+            @include mx.font-klee-one($fs: 32px);
+            color: rgba(164, 82, 18, 1);
+        }
+    }
+}
+
+.exit-btn {
+    &-foods {
+        background-color: rgba(255, 249, 242, 1);
+        border: 3px solid rgba(243, 131, 45, 1) !important;
+
+        &__svg {
+            width: 22px;
+            height: 22px;
+
+            & path {
+                fill: rgba(243, 131, 45, 1);
+            }
+        }
+
+        &__text {
+            @include mx.font-delius-unicase();
+            color: rgba(243, 131, 45, 1);
+        }
+    }
+}
+
+.game-main-content {
+    &--foods {
+        width: 536px;
+    }
+}
+
+.card-foods {
+    cursor: pointer;
+    width: 122px;
+    height: 120px;
+}
+
+.game-body-overlay__card{
+    &--foods{
+        background-color: rgba(246, 246, 246, 1);
+    }
+    &__title {
+        &--foods {
+            @include mx.font-klee-one($fw: 600, $fs: 28px); 
+            text-align: center;
+            color: rgba(164, 82, 18, 1);
+        }
+    }
+    &__bck-btn {
+        &--foods {
+            border: 3px solid rgba(243, 131, 45, 1);
+            background-color: rgba(255, 171, 62, 1);
+            @include mx.font-delius-unicase();
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    &__ext-btn {
+        &--foods {
+            border: 3px solid rgba(243, 131, 45, 1);
+            background-color: rgba(255, 249, 242, 1);
+            @include mx.font-delius-unicase();
+            color:rgba(243, 131, 45, 1);
+        }
+    }
+}
+
+

@@ -80,7 +80,20 @@
     }
 }
 
+.clr-bl {
+    >rect {
+        fill:#097FC5;
+    }
+}
+
+.clr-or {
+    >rect {
+        fill: #F3832D;
+    }
+}
+
 .exit-btn {
+    cursor: pointer;
     @include mx.d-flex($fd: row, $gp: 10px);
     border-width: 0;
     border-radius: 10px;
@@ -88,7 +101,7 @@
 }
 
 .game-main-content {
-    @include mx.d-flex($fd: row, $gp: 16px);
+    @include mx.d-flex($fd: row, $gp: 8px);
     margin-top: 32px;
     flex-wrap: wrap;
 }

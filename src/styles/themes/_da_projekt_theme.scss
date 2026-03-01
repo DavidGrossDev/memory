@@ -38,8 +38,16 @@
 }
 
 .game-main-content {
-    &--da-projects {
+    &--da-projects16 {
         width: 528px;
+    }
+
+    &--da-projects24 {
+        width: 100%;
+    }
+
+    &--da-projects36 {
+        width: 100%;
     }
 }
 
@@ -47,6 +55,32 @@
     cursor: pointer;
     width: 120px;
     height: 100px;
+
+    &__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: all 300ms ease-in-out;
+    }
+
+    &__face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        >img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &--bck {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &.is-flipped .card-da-project__inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .game-body-overlay__card{

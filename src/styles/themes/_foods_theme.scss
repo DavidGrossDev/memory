@@ -44,8 +44,16 @@
 }
 
 .game-main-content {
-    &--foods {
+    &--foods16 {
         width: 536px;
+    }
+    
+    &--foods24 {
+        width: 772px;
+    }
+
+    &--foods36 {
+        width: 772px;
     }
 }
 
@@ -53,6 +61,32 @@
     cursor: pointer;
     width: 122px;
     height: 120px;
+
+    &__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: all 300ms ease-in-out;
+    }
+
+    &__face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        >img {
+            width: 100%;
+            height: 100%;
+        }
+
+        &--bck {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &.is-flipped .card-foods__inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .game-body-overlay__card{

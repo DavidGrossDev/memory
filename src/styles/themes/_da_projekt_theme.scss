@@ -51,7 +51,7 @@
     }
 }
 
-.card-da-project {
+.card-da_projects {
     cursor: pointer;
     width: 120px;
     height: 100px;
@@ -78,7 +78,7 @@
         }
     }
 
-    &.is-flipped .card-da-project__inner {
+    &.is-flipped .card-da_projects__inner {
         transform: rotateY(180deg);
     }
 }

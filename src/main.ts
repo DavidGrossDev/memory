@@ -1,14 +1,22 @@
 import './styles/style.scss';
-import { Foodcard } from './scripts/foodcards.class';
+import { Card } from './scripts/card.class';
 import { cardTemplate } from './scripts/card.template';
+import { showWinningScreen } from './scripts/win-screen.template';
 
-let playCards: Foodcard[] = [];
-let flippedCards: Foodcard[] = [];
+let playCards: Card[] = [];
+let flippedCards: Card[] = [];
 
 let scoreOrange = 0;
 let scoreBlue = 0;
 
-let currentPlayerIconRef = document.getElementById('current_player_icon') as HTMLElement;
+const overlayRef = document.getElementById('game_overlay') as HTMLElement;
+const exitCardRef = document.getElementById('exit_card') as HTMLElement;
+const endScoreORef = document.getElementById('end_score_orange') as HTMLElement;
+const endScoreBRef = document.getElementById('end_score_blue') as HTMLElement;
+
+const currentPlayerIconRef = document.getElementById('current_player_icon') as HTMLElement;
+const exitBtnRef = document.getElementById('exit_btn');
+const bckToGameRef = document.getElementById('bck_to_game');
 
 type Theme = "da_projects" | "foods";
 type PlayerID = "orange" | "blue";
@@ -16,23 +24,24 @@ type PlaySize = 16 | 24 | 36;
 
 let playtheme: Theme;
 let currentPlayer: PlayerID;
+let playSize:PlaySize;
 
-initGame("foods", "orange", 16);
+initGame("da_projects", "orange", 16);
 
 function initGame(theme: Theme, player: PlayerID, size: PlaySize): void {
     playtheme = theme;
     currentPlayer = player;
+    playSize = size;
+
     let cardPairs = size / 2;
-
-
     setCurrentPlayerColor();
 
     playCards = [];
     flippedCards = [];
 
     for (let index = 0; index < cardPairs; index++) {
-        playCards.push(new Foodcard(index));
-        playCards.push(new Foodcard(index));
+        playCards.push(new Card(index, playtheme));
+        playCards.push(new Card(index, playtheme));
     }
     prepareGame(theme, size);
     shuffleCards(playCards);
@@ -66,7 +75,7 @@ function prepareGame(theme: Theme, size: PlaySize) {
     }
 }
 
-function shuffleCards(array: Foodcard[]) {
+function shuffleCards(array: Card[]) {
     array.sort(() => Math.random() - 0.5);
 }
 
@@ -74,7 +83,6 @@ function renderCards() {
     const playdeckRef = document.getElementById('playdeck');
     if (!playdeckRef) return;
     playdeckRef.innerHTML = "";
-
     playCards.forEach((card, index) => {
         playdeckRef.innerHTML += cardTemplate(card, index, playtheme);
     });
@@ -82,12 +90,11 @@ function renderCards() {
 
 document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
-    const cardElement = target.closest(".card-foods") as HTMLElement;
+    const cardElement = target.closest(".card") as HTMLElement;
     if (!cardElement) return;
-
     const index = Number(cardElement.dataset.index);
     console.log(index);
-
+    
     flipCard(index);
 });
 
@@ -105,10 +112,10 @@ function flipCard(index: number) {
 }
 
 function updatePlaydeck() {
-    const allCards = document.querySelectorAll(".card");
+    let allCards = document.querySelectorAll(".card");
 
     allCards.forEach((element, index) => {
-        const card = playCards[index];
+        let card = playCards[index];
 
         if (card.isMatched || card.isFlipped) {
             element.classList.add("is-flipped");
@@ -126,6 +133,7 @@ function checkMatch() {
         card2.isMatched = true;
         pointForCurrentPlayer();
         flippedCards = [];
+        checkWinningCondition();
     } else {
         setTimeout(() => {
             flipCardsBack(card1, card2);
@@ -142,11 +150,35 @@ function pointForCurrentPlayer() {
         let scoreOrangeRef = document.getElementById('score_orange') as HTMLElement;
         scoreOrange++;
         scoreOrangeRef.innerText = scoreOrange.toString();
-
+        endScoreORef.innerText = scoreOrange.toString();
     } else {
         let scoreBlueRef = document.getElementById('score_blue') as HTMLElement;
         scoreBlue++;
         scoreBlueRef.innerText = scoreBlue.toString();
+        endScoreBRef.innerText = scoreBlue.toString();
+    }
+}
+
+function checkWinningCondition() {
+    let maxScore = scoreOrange + scoreBlue;
+    let maxPairs = playSize/2;
+    let winScreenRef = document.getElementById('winner_screen') as HTMLElement;
+    let colorO = "#F58E39";
+    let colorB = "#097FC5";
+    overlayRef.classList.add('d_none');
+    if(!(maxScore == maxPairs)) return;
+
+
+    if(scoreOrange > scoreBlue) {
+        overlayRef.classList.remove('d_none');
+        overlayRef.classList.add('bck-wh');
+        winScreenRef.classList.remove('d_none');
+        winScreenRef.innerHTML = showWinningScreen("Orange", colorO);
+    } else {
+        overlayRef.classList.remove('d_none');
+        overlayRef.classList.add('bck-wh');
+        winScreenRef.classList.remove('d_none');
+        winScreenRef.innerHTML = showWinningScreen("Blue", colorB)
     }
 }
 
@@ -160,7 +192,25 @@ function setCurrentPlayerColor() {
     }
 }
 
-function flipCardsBack(card1: Foodcard, card2: Foodcard) {
+function flipCardsBack(card1: Card, card2: Card) {
     card1.isFlipped = false;
     card2.isFlipped = false;
 }
+
+function exitGame() {
+    overlayRef.classList.remove('d_none');
+    exitCardRef.classList.remove('d_none');
+}
+
+function bckToGame() {
+    overlayRef.classList.add('d_none');
+    exitCardRef.classList.remove('d_none');
+}
+
+exitBtnRef?.addEventListener('click', () => {
+    exitGame();
+});
+
+bckToGameRef?.addEventListener('click', () => {
+    bckToGame();
+});

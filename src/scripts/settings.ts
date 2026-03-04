@@ -1,25 +1,20 @@
 import '../styles/style.scss';
 
-let daProjectsThemeBtnRef = document.getElementById('theme_da_projects') as HTMLButtonElement;
-let foodsThemeBtnRef = document.getElementById('theme_foods') as HTMLButtonElement;
-
-let bluePlayerBtnRef = document.getElementById('player_blue') as HTMLButtonElement;
-let orangePlayerBtnRef = document.getElementById('player_orange') as HTMLButtonElement;
-
-let boardSizeSmallBtnRef = document.getElementById('board_size_16') as HTMLButtonElement;
-let boardSizeMediumBtnRef = document.getElementById('board_size_24') as HTMLButtonElement;
-let boardSizeBigBtnRef = document.getElementById('board_size_36') as HTMLButtonElement;
-
-let noPlayerSvgRef = document.getElementById('no_player_svg') as HTMLElement;
-let chosenPlayerSvgRef = document.getElementById('chosen_player_svg') as HTMLElement;
-let noBoardSvgRef = document.getElementById('no_board_svg') as HTMLElement;
-let chosenBoardSvgRef = document.getElementById('chosen_board_svg') as HTMLElement;
-
-let visualChosenThemeRef = document.getElementById('visual_chose_theme') as HTMLElement;
-let visualChosenPlayerRef = document.getElementById('visual_chose_player') as HTMLElement;
-let visualChosenBoardRef = document.getElementById('visual_chosen_board') as HTMLElement;
-
-let startGameBtnRef = document.getElementById('start_game_btn') as HTMLButtonElement;
+const daProjectsThemeBtnRef = document.getElementById('theme_da_projects') as HTMLButtonElement;
+const foodsThemeBtnRef = document.getElementById('theme_foods') as HTMLButtonElement;
+const bluePlayerBtnRef = document.getElementById('player_blue') as HTMLButtonElement;
+const orangePlayerBtnRef = document.getElementById('player_orange') as HTMLButtonElement;
+const boardSizeSmallBtnRef = document.getElementById('board_size_16') as HTMLButtonElement;
+const boardSizeMediumBtnRef = document.getElementById('board_size_24') as HTMLButtonElement;
+const boardSizeBigBtnRef = document.getElementById('board_size_36') as HTMLButtonElement;
+const noPlayerSvgRef = document.getElementById('no_player_svg') as HTMLElement;
+const chosenPlayerSvgRef = document.getElementById('chosen_player_svg') as HTMLElement;
+const noBoardSvgRef = document.getElementById('no_board_svg') as HTMLElement;
+const chosenBoardSvgRef = document.getElementById('chosen_board_svg') as HTMLElement;
+const visualChosenThemeRef = document.getElementById('visual_chose_theme') as HTMLElement;
+const visualChosenPlayerRef = document.getElementById('visual_chose_player') as HTMLElement;
+const visualChosenBoardRef = document.getElementById('visual_chosen_board') as HTMLElement;
+const startGameBtnRef = document.getElementById('start_game_btn') as HTMLButtonElement;
 
 type Theme = "da_projects" | "foods";
 type PlayerID = "orange" | "blue";
@@ -103,7 +98,6 @@ function choseTheme(theme: string) {
         visualChosenThemeRef.innerText = "Foods";
     }
 }
-
 
 function updateSettingsDisplay(theme: string) {
     let themeImgRef = document.getElementById('theme_img') as HTMLImageElement;

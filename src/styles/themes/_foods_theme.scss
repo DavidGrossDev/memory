@@ -150,42 +150,48 @@
 
         &__visual-score {
             &--foods {
-                @include mx.d-flex($fd: row, $gp:8px);
+                @include mx.d-flex($fd: row, $gp: 8px);
             }
         }
 
         &__count {
-            @include mx.font-red-rose($fw: 700, $fs: 40px); 
-
-            
+            &--foods {
+                @include mx.font-red-rose($fw: 700, $fs: 40px);
+            }
         }
     }
 }
 
 .winner-screen {
-    @include mx.d-flex($gp:64px);
+    @include mx.d-flex($gp: 64px);
     text-align: center;
-    &__header {
-        @include mx.d-flex($gp: 8px);
-        color: #A45212;
 
-        >p {
-            @include mx.font-klee-one($fw: 400, $fs: 40px);
+    &__header {
+        &--foods {
+            @include mx.d-flex($gp: 8px);
+            color: #A45212;
+
+            >p {
+                @include mx.font-klee-one($fw: 400, $fs: 40px);
+            }
+
+            >h1 {
+                @include mx.font-klee-one($fw: 600, $fs: 80px);
+            }
         }
-        >h1 {
-            @include mx.font-klee-one($fw: 600, $fs: 80px);
-        }
+
     }
 
     &__home-btn {
-        cursor: pointer;
-        padding: 12px 20px;
-        background-color: #F3832D;
-        border-width: 0;
-        border-radius: 10px;
+        &--foods {
+            background-color: #F3832D;
+        }
+        
         &__title {
-            @include mx.font-delius-unicase();
+            &--foods {
+                @include mx.font-delius-unicase();
             color: #FFFFFF;
+            } 
         }
     }
 }

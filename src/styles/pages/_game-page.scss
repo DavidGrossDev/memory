@@ -108,6 +108,23 @@
     flex-wrap: wrap;
 }
 
+.winner-screen {
+    &__home-btn {
+        cursor: pointer;
+        padding: 12px 20px;
+        border-width: 0;
+        border-radius: 10px;
+    }
+}
+
 .bck-wh {
     background-color: #F6F6F6;
+}
+
+.bck-or {
+    background-color: #EA6900;
+}
+
+.bck-bl {
+    background-color: #1E7594;
 }

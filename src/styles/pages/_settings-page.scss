@@ -64,7 +64,6 @@
     @include mx.d-flex($fd: row, $gp: 10px);
 
     &__svg {
-
         &--active {
             display: none;
         }
@@ -73,6 +72,32 @@
     &__text {
         @include mx.font-almarai($fs: 20px);
     }
+
+    &.chosen {
+        .select-btn__text {
+            font-weight: 700;
+        }
+        .select-btn__svg {
+            display: none;
+        }
+        .select-btn__svg--active {
+            display: flex;
+        }
+    }
+
+    // &--active {
+    //     &__text {
+    //         font-weight: 700;
+    //     }
+
+    //     &__svg {
+    //         display: none;
+
+    //         &--active {
+    //             display: flex;
+    //         }
+    //     }
+    // }
 
     &:hover .select-btn {
         &__text {
@@ -90,6 +115,15 @@
 
 }
 
+// .chosen {
+//     .select-btn__svg {
+//         display: none;
+//     }
+//     .select-btn__svg--active {
+//         display: flex;
+//     }
+// }
+
 .selected-items-and-play-btn {
     @include mx.d-flex($fd: row, $gp: 16px);
     height: 81px;
@@ -99,11 +133,11 @@
         @include mx.font-almarai($fs: 20px);
     }
 
-    &__svg {
-        &--active {
-            display: none;
-        }
-    }
+    // &__svg {
+    //     &--active {
+    //         display: none;
+    //     }
+    // }
 
     &__btn {
         cursor: pointer;
@@ -137,14 +171,14 @@
         }
     }
 
-    &:hover .selected-items-and-play-btn {
+    // &:hover .selected-items-and-play-btn {
 
-        &__svg {
-            display: none;
+    //     &__svg {
+    //         display: none;
 
-            &--active {
-                display: flex;
-            }
-        }
-    }
+    //         &--active {
+    //             display: flex;
+    //         }
+    //     }
+    // }
 }

@@ -1,7 +1,149 @@
 import './styles/style.scss';
 import { Card } from './scripts/card.class';
 import { cardTemplate } from './scripts/card.template';
+import { showEndScreenFinalScore } from './scripts/end-screen.template';
+import { winnerSvgtemplate } from './scripts/winner-svg.template';
 import { showWinningScreen } from './scripts/win-screen.template';
+
+
+
+let daProjectsThemeBtnRef = document.getElementById('theme_da_projects') as HTMLButtonElement;
+let foodsThemeBtnRef = document.getElementById('theme_foods') as HTMLButtonElement;
+
+let bluePlayerBtnRef = document.getElementById('player_blue') as HTMLButtonElement;
+let orangePlayerBtnRef = document.getElementById('player_orange') as HTMLButtonElement;
+
+let boardSizeSmallBtnRef = document.getElementById('board_size_16') as HTMLButtonElement;
+let boardSizeMediumBtnRef = document.getElementById('board_size_24') as HTMLButtonElement;
+let boardSizeBigBtnRef = document.getElementById('board_size_36') as HTMLButtonElement;
+
+let noPlayerSvgRef = document.getElementById('no_player_svg') as HTMLElement;
+let chosenPlayerSvgRef = document.getElementById('chosen_player_svg') as HTMLElement;
+let noBoardSvgRef = document.getElementById('no_board_svg') as HTMLElement;
+let chosenBoardSvgRef = document.getElementById('chosen_board_svg') as HTMLElement;
+
+let visualChosenThemeRef = document.getElementById('visual_chose_theme') as HTMLElement;
+let visualChosenPlayerRef = document.getElementById('visual_chose_player') as HTMLElement;
+let visualChosenBoardRef = document.getElementById('visual_chosen_board') as HTMLElement;
+
+let startGameBtnRef = document.getElementById('start_game_btn') as HTMLButtonElement;
+
+daProjectsThemeBtnRef?.addEventListener('click', () => {
+    daProjectsThemeBtnRef.classList.add('chosen');
+    foodsThemeBtnRef.classList.remove('chosen');
+    choseTheme("da_projects");
+
+})
+
+foodsThemeBtnRef?.addEventListener('click', () => {
+    daProjectsThemeBtnRef.classList.remove('chosen');
+    foodsThemeBtnRef.classList.add('chosen');
+    choseTheme("foods");
+
+})
+
+bluePlayerBtnRef?.addEventListener('click', () => {
+    bluePlayerBtnRef.classList.add('chosen');
+    orangePlayerBtnRef.classList.remove('chosen');
+    visualChosenPlayerRef.innerText = "Blue";
+    noPlayerSvgRef.classList.add('d_none');
+    chosenPlayerSvgRef.classList.remove('d_none');
+})
+
+orangePlayerBtnRef?.addEventListener('click', () => {
+    bluePlayerBtnRef.classList.remove('chosen');
+    orangePlayerBtnRef.classList.add('chosen');
+    visualChosenPlayerRef.innerText = "Orange";
+    noPlayerSvgRef.classList.add('d_none');
+    chosenPlayerSvgRef.classList.remove('d_none');
+})
+
+boardSizeSmallBtnRef?.addEventListener('click', () => {
+    boardSizeSmallBtnRef.classList.add('chosen');
+    boardSizeMediumBtnRef.classList.remove('chosen');
+    boardSizeBigBtnRef.classList.remove('chosen');
+    visualChosenBoardRef.innerText = "16";
+    noBoardSvgRef.classList.add('d_none');
+    chosenBoardSvgRef.classList.remove('d_none');
+})
+
+boardSizeMediumBtnRef?.addEventListener('click', () => {
+    boardSizeSmallBtnRef.classList.remove('chosen');
+    boardSizeMediumBtnRef.classList.add('chosen');
+    boardSizeBigBtnRef.classList.remove('chosen');
+    visualChosenBoardRef.innerText = "24";
+    noBoardSvgRef.classList.add('d_none');
+    chosenBoardSvgRef.classList.remove('d_none');
+})
+
+boardSizeBigBtnRef?.addEventListener('click', () => {
+    boardSizeSmallBtnRef.classList.remove('chosen');
+    boardSizeMediumBtnRef.classList.remove('chosen');
+    boardSizeBigBtnRef.classList.add('chosen');
+    visualChosenBoardRef.innerText = "36";
+    noBoardSvgRef.classList.add('d_none');
+    chosenBoardSvgRef.classList.remove('d_none');
+})
+
+startGameBtnRef?.addEventListener('click', () => {
+
+    startGame();
+
+})
+
+function startGame() {
+    let chosenTheme: Theme = visualChosenThemeRef.innerText.toLowerCase() as Theme;
+    let chosenPlayer: PlayerID = visualChosenPlayerRef.innerText.toLowerCase() as PlayerID;
+    let chosenBoard: PlaySize = Number(visualChosenBoardRef.innerText) as PlaySize;
+    if (chosenPlayer && chosenBoard) {
+        window.location.href = `/game.html?theme=${chosenTheme}&player=${chosenPlayer}&board=${chosenBoard}`;
+    }
+}
+
+function choseTheme(theme: string) {
+    updateSettingsDisplay(theme);
+    if (theme == "da_projects") {
+        visualChosenThemeRef.innerText = "Da_Projects";
+    } else {
+        visualChosenThemeRef.innerText = "Foods";
+    }
+}
+
+
+function updateSettingsDisplay(theme: string) {
+    let themeImgRef = document.getElementById('theme_img') as HTMLImageElement;
+    themeImgRef.src = `/assets/img/${theme}_theme/${theme}-example.png`;
+}
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const theme = params.get("theme") as Theme;
+    const player = params.get("player") as PlayerID;
+    const board = Number(params.get("board")) as PlaySize;
+
+    if (theme && player && board) {
+        initGame(theme, player, board);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let playCards: Card[] = [];
 let flippedCards: Card[] = [];
@@ -11,12 +153,14 @@ let scoreBlue = 0;
 
 const overlayRef = document.getElementById('game_overlay') as HTMLElement;
 const exitCardRef = document.getElementById('exit_card') as HTMLElement;
-const endScoreORef = document.getElementById('end_score_orange') as HTMLElement;
-const endScoreBRef = document.getElementById('end_score_blue') as HTMLElement;
 
 const currentPlayerIconRef = document.getElementById('current_player_icon') as HTMLElement;
-const exitBtnRef = document.getElementById('exit_btn');
-const bckToGameRef = document.getElementById('bck_to_game');
+const exitBtnRef = document.getElementById('exit_btn') as HTMLElement;
+const bckToGameRef = document.getElementById('bck_to_game') as HTMLElement;
+
+const colorO = "#F58E39";
+const colorB = "#097FC5";
+const colorU = "#0000";
 
 type Theme = "da_projects" | "foods";
 type PlayerID = "orange" | "blue";
@@ -24,9 +168,11 @@ type PlaySize = 16 | 24 | 36;
 
 let playtheme: Theme;
 let currentPlayer: PlayerID;
-let playSize:PlaySize;
+let playSize: PlaySize;
 
-initGame("da_projects", "orange", 16);
+
+
+
 
 function initGame(theme: Theme, player: PlayerID, size: PlaySize): void {
     playtheme = theme;
@@ -93,8 +239,6 @@ document.addEventListener("click", (event) => {
     const cardElement = target.closest(".card") as HTMLElement;
     if (!cardElement) return;
     const index = Number(cardElement.dataset.index);
-    console.log(index);
-    
     flipCard(index);
 });
 
@@ -113,10 +257,8 @@ function flipCard(index: number) {
 
 function updatePlaydeck() {
     let allCards = document.querySelectorAll(".card");
-
     allCards.forEach((element, index) => {
         let card = playCards[index];
-
         if (card.isMatched || card.isFlipped) {
             element.classList.add("is-flipped");
         } else {
@@ -150,42 +292,88 @@ function pointForCurrentPlayer() {
         let scoreOrangeRef = document.getElementById('score_orange') as HTMLElement;
         scoreOrange++;
         scoreOrangeRef.innerText = scoreOrange.toString();
-        endScoreORef.innerText = scoreOrange.toString();
+
     } else {
         let scoreBlueRef = document.getElementById('score_blue') as HTMLElement;
         scoreBlue++;
         scoreBlueRef.innerText = scoreBlue.toString();
-        endScoreBRef.innerText = scoreBlue.toString();
+
     }
 }
 
 function checkWinningCondition() {
     let maxScore = scoreOrange + scoreBlue;
-    let maxPairs = playSize/2;
+    let maxPairs = playSize / 2;
+    let endScreenRef = document.getElementById('end_screen') as HTMLElement;
     let winScreenRef = document.getElementById('winner_screen') as HTMLElement;
-    let colorO = "#F58E39";
-    let colorB = "#097FC5";
+
+    if (!(maxScore == maxPairs)) return;
+    resetOverlay(overlayRef, endScreenRef, winScreenRef);
+    showEndScreen(overlayRef, endScreenRef);
+    setTimeout(() => {
+        showWinner(scoreOrange, scoreBlue, endScreenRef, overlayRef, winScreenRef);
+    }, 4000);
+}
+
+function resetOverlay(overlayRef: HTMLElement, endScreenRef: HTMLElement, winScreenRef: HTMLElement) {
     overlayRef.classList.add('d_none');
-    if(!(maxScore == maxPairs)) return;
+    overlayRef.classList.remove('bck-wh');
+    overlayRef.classList.remove('bck-or');
+    overlayRef.classList.remove('bck-bl');
+    endScreenRef.classList.add('d_none');
+    winScreenRef.classList.add('d_none');
+    winScreenRef.innerHTML = "";
+}
 
-
-    if(scoreOrange > scoreBlue) {
-        overlayRef.classList.remove('d_none');
-        overlayRef.classList.add('bck-wh');
-        winScreenRef.classList.remove('d_none');
-        winScreenRef.innerHTML = showWinningScreen("Orange", colorO);
+function showEndScreen(overlayRef: HTMLElement, endScreenRef: HTMLElement) {
+    overlayRef.classList.remove('d_none');
+    if (playtheme === "foods") {
+        overlayRef.classList.add('bck-or');
     } else {
-        overlayRef.classList.remove('d_none');
-        overlayRef.classList.add('bck-wh');
-        winScreenRef.classList.remove('d_none');
-        winScreenRef.innerHTML = showWinningScreen("Blue", colorB)
+        overlayRef.classList.add('bck-bl');
     }
+
+    endScreenRef.classList.remove('d_none');
+    endScreenRef.innerHTML = showEndScreenFinalScore(playtheme);
+    let endScoreORef = document.getElementById('end_score_orange') as HTMLElement;
+    let endScoreBRef = document.getElementById('end_score_blue') as HTMLElement;
+    endScoreORef.innerText = scoreOrange.toString();
+    endScoreBRef.innerText = scoreBlue.toString();
+}
+
+function showWinner(scoreOrange: number, scoreBlue: number, endScreenRef: HTMLElement, overlayRef: HTMLElement, winScreenRef: HTMLElement) {
+    let winnerSvg = "";
+    if (scoreOrange > scoreBlue) {
+        prepareWinningScreen(endScreenRef, overlayRef, winScreenRef);
+        winnerSvg = winnerSvgtemplate(playtheme, colorO);
+        winScreenRef.innerHTML = showWinningScreen("Orange", playtheme, winnerSvg);
+    } else if (scoreOrange < scoreBlue) {
+        prepareWinningScreen(endScreenRef, overlayRef, winScreenRef);
+        winnerSvg = winnerSvgtemplate(playtheme, colorB);
+        winScreenRef.innerHTML = showWinningScreen("Blue", playtheme, winnerSvg);
+    } else {
+        prepareWinningScreen(endScreenRef, overlayRef, winScreenRef);
+        winnerSvg = winnerSvgtemplate(playtheme, colorU);
+        winScreenRef.innerHTML = showWinningScreen("Both", playtheme, winnerSvg);
+    }
+}
+
+function prepareWinningScreen(endScreenRef: HTMLElement, overlayRef: HTMLElement, winScreenRef: HTMLElement) {
+    endScreenRef.classList.add('d_none');
+    overlayRef.classList.remove('bck-or');
+    overlayRef.classList.remove('bck-bl');
+    if (playtheme === "foods") {
+        overlayRef.classList.add('bck-wh');
+    } else {
+        overlayRef.classList.add('bck-bl');
+    }
+    winScreenRef.classList.remove('d_none');
 }
 
 function setCurrentPlayerColor() {
     currentPlayerIconRef.classList.remove('clr-or');
     currentPlayerIconRef.classList.remove('clr-bl');
-    if(currentPlayer === "orange") {
+    if (currentPlayer === "orange") {
         currentPlayerIconRef.classList.add('clr-or');
     } else {
         currentPlayerIconRef.classList.add('clr-bl');
@@ -204,7 +392,7 @@ function exitGame() {
 
 function bckToGame() {
     overlayRef.classList.add('d_none');
-    exitCardRef.classList.remove('d_none');
+    exitCardRef.classList.add('d_none');
 }
 
 exitBtnRef?.addEventListener('click', () => {

@@ -8,15 +8,15 @@
 </head>
 
 <body class="game-body">
-    <section id="game_overlay" class="game-body-overlay d_none" > <!--d_none-->
+    <section id="game_overlay" class="game-body-overlay d_none" > 
         <div id="exit_card" class="game-body-overlay__card game-body-overlay__card--foods d_none">
             <h3 class="game-body-overlay__card__title--foods">Are you sure you want to quit the game?</h3>
             <div class="game-body-overlay__card__btn-div">
                 <button id="bck_to_game" class="game-body-overlay__card__bck-btn--foods">No, Back to game</button>
-                <button class="game-body-overlay__card__ext-btn--foods">Exit game</button>
+                <button id="bck_to_home" class="game-body-overlay__card__ext-btn--foods">Exit game</button>
             </div>
         </div>
-        <div id="end_screen" class="end-screen d_none"> <!--d_none-->
+        <div id="end_screen" class="end-screen d_none"> 
 
         </div>
         <div id="winner_screen" class="winner-screen d_none">
@@ -73,7 +73,7 @@
 
     </main>
 
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/scripts/game.ts"></script>
 
 </body>
 

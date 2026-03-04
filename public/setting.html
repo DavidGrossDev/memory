@@ -28,7 +28,7 @@
                         <h3 class="settings-headline__title">Game themes</h3>
                     </section>
                     <section class="choose-section">
-                        <button class="select-btn">
+                        <button id="theme_da_projects" class="select-btn chosen">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -58,7 +58,7 @@
                                     fill="#F0EA6E" />
                             </svg>
                         </button>
-                        <button class="select-btn">
+                        <button id="theme_foods" class="select-btn ">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -107,7 +107,7 @@
                         <h3 class="settings-headline__title">Choose player</h3>
                     </section>
                     <section class="choose-section">
-                        <button class="select-btn">
+                        <button id="player_blue" class="select-btn">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -136,7 +136,8 @@
                                     d="M49.6603 8.66028L41 2.28095e-05L32.3397 8.66028L41 17.3205L49.6603 8.66028ZM0 8.66028L0 10.1603L41 10.1603V8.66028V7.16028L0 7.16028L0 8.66028Z"
                                     fill="#F0EA6E" />
                             </svg>
-                        </button><button class="select-btn">
+                        </button>
+                        <button id="player_orange" class="select-btn">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -185,7 +186,7 @@
                         <h3 class="settings-headline__title">Board size</h3>
                     </section>
                     <section class="choose-section">
-                        <button class="select-btn">
+                        <button id="board_size_16" class="select-btn">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -215,7 +216,7 @@
                                     fill="#F0EA6E" />
                             </svg>
                         </button>
-                        <button class="select-btn">
+                        <button id="board_size_24" class="select-btn">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -245,7 +246,7 @@
                                     fill="#F0EA6E" />
                             </svg>
                         </button>
-                        <button class="select-btn">
+                        <button id="board_size_36" class="select-btn">
                             <svg class="select-btn__svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <mask id="mask0_2030_96" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                     width="24" height="24">
@@ -279,28 +280,28 @@
                 </div>
             </section>
             <section class="settings-main__right">
-                <img src="./assets/img/Property 1=DA projects.png" alt="">
+                <img id="theme_img" src="/assets/img/da_projects_theme/da_projects-example.png" alt="">
                 <div class="selected-items-and-play-btn">
-                    <p class="selected-items-and-play-btn__text">Game theme</p>
-                    <svg class="selected-items-and-play-btn__svg" width="27" height="56" viewBox="0 0 27 56" fill="none">
+                    <p id="visual_chose_theme" class="selected-items-and-play-btn__text">Da_Projects</p>
+                    <svg id="no_player_svg" class="selected-items-and-play-btn__svg " width="27" height="56" viewBox="0 0 27 56" fill="none">
                         <line x1="22.3154" y1="1.32435" x2="3.7745" y2="54.166" stroke="#F0EA6E" stroke-width="8" />
                     </svg>
-                    <svg class="selected-items-and-play-btn__svg--active" width="37" height="60" viewBox="0 0 37 60" fill="none">
+                    <svg id="chosen_player_svg" class="selected-items-and-play-btn__svg--active d_none" width="37" height="60" viewBox="0 0 37 60" fill="none">
                         <path
                             d="M5.16398 59.2224L20.6559 54.0584L15.4919 38.5665L-6.35285e-07 43.7304L5.16398 59.2224ZM34.328 0.894409L32.5391 -1.81198e-05L8.5391 48L10.328 48.8944L12.1168 49.7888L36.1168 1.78884L34.328 0.894409Z"
                             fill="#F0EA6E" />
                     </svg>
-                    <p class="selected-items-and-play-btn__text">Player</p>
-                    <svg class="selected-items-and-play-btn__svg" width="27" height="56" viewBox="0 0 27 56" fill="none">
+                    <p id="visual_chose_player" class="selected-items-and-play-btn__text">Player</p>
+                    <svg id="no_board_svg" class="selected-items-and-play-btn__svg" width="27" height="56" viewBox="0 0 27 56" fill="none">
                         <line x1="22.3154" y1="1.32435" x2="3.7745" y2="54.166" stroke="#F0EA6E" stroke-width="8" />
                     </svg>
-                    <svg class="selected-items-and-play-btn__svg--active" width="37" height="60" viewBox="0 0 37 60" fill="none">
+                    <svg id="chosen_board_svg" class="selected-items-and-play-btn__svg--active d_none" width="37" height="60" viewBox="0 0 37 60" fill="none">
                         <path
                             d="M5.16398 59.2224L20.6559 54.0584L15.4919 38.5665L-6.35285e-07 43.7304L5.16398 59.2224ZM34.328 0.894409L32.5391 -1.81198e-05L8.5391 48L10.328 48.8944L12.1168 49.7888L36.1168 1.78884L34.328 0.894409Z"
                             fill="#F0EA6E" />
                     </svg>
-                    <p class="selected-items-and-play-btn__text">Board size</p>
-                    <button class="selected-items-and-play-btn__btn">
+                    <p id="visual_chosen_board" class="selected-items-and-play-btn__text">Board size</p>
+                    <button id="start_game_btn" class="selected-items-and-play-btn__btn">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <mask id="mask0_3282_3588" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
                                 width="24" height="24">
